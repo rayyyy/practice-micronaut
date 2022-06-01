@@ -9,10 +9,17 @@ package com.example;
 
 service JijinService {
   rpc send (JijinRequest) returns (JijinReply) {}
+  rpc run(JijinReplyTwo) returns (JijinReplyTwo) {}
 }
 
 message JijinRequest {
   string name = 1;
+}
+
+message JijinReplyTwo {
+  string message = 1;
+  int32 code = 2;
+  bool success = 3;
 }
 
 message JijinReply {

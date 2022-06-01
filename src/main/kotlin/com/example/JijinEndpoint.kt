@@ -14,4 +14,14 @@ class JijinEndpoint(): JijinServiceImplBase() {
         responseObserver.onNext(reply)
         responseObserver.onCompleted()
     }
+
+    override fun run(request: JijinReplyTwo, responseObserver: StreamObserver<JijinReplyTwo>) {
+        val replyBuilder = JijinReplyTwo.newBuilder()
+        replyBuilder.setMessage("Hello " + request.message)
+        replyBuilder.setCode(request.code+1)
+        replyBuilder.setSuccess(!request.success)
+
+        responseObserver.onNext(replyBuilder.build())
+        responseObserver.onCompleted()
+    }
 }
